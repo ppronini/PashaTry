@@ -12,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void fader(View view){
         ImageView bview=findViewById(R.id.ivBart);
-
         bview.animate().translationX(50).rotation(1800).alpha(1).setDuration(2000);
 
     }
