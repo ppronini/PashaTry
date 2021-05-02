@@ -2,26 +2,36 @@ package com.pasha.pashatry;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    public void fader(View view){
-        ImageView bview=findViewById(R.id.ivBart);
-        bview.animate().translationX(50).rotation(1800).alpha(1).setDuration(2000);
-
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView bvieww=findViewById(R.id.ivBart);
-        bvieww.animate().translationX(500).rotation(1800).alpha(1).setDuration(2000);
+    }
+
+    private void playMp3(String nameOfFile){
+        MediaPlayer mPlayer = MediaPlayer.create(this, getResources().getIdentifier(nameOfFile, "raw", getPackageName()));
+        mPlayer.start();
+    }
+
+    public void playPhrase(View view) {
+
+        Button buttonpressed=(Button) view;
+
+        Log.i("Button pressed", buttonpressed.getTag().toString());
+
+        String fileToPlay=buttonpressed.getTag().toString();
+
+        Log.i("File Name",fileToPlay);
+
+        playMp3(fileToPlay);
+
     }
 }
